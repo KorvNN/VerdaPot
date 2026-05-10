@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive icon foreground for Smart Plant. The 108dp canvas has a 72dp safe
+  zone centered; the leaf is drawn within that. Background color lives in
+  values/colors.xml (deep green).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Leaf body -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M54,22 C36,30 26,50 30,68 C32,80 42,86 54,86 C66,86 76,80 78,68 C82,50 72,30 54,22 Z"/>
+    <!-- Midrib -->
+    <path
+        android:strokeColor="#1B5E20"
+        android:strokeWidth="2.4"
+        android:strokeLineCap="round"
+        android:pathData="M54,28 L54,84"/>
+    <!-- Side veins -->
+    <path
+        android:strokeColor="#1B5E20"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:pathData="M54,42 L40,52 M54,42 L68,52 M54,58 L36,68 M54,58 L72,68 M54,72 L42,80 M54,72 L66,80"/>
+</vector>
