@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>VerdaPot</title>
+  <defs>
+    <linearGradient id="verdapot-accent" x1="12" y1="8" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a8e063"/>
+      <stop offset="1" stop-color="#56ab8f"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="#12352d"/>
+  <rect x="3.5" y="3.5" width="57" height="57" rx="13.5" fill="none" stroke="url(#verdapot-accent)" stroke-opacity=".5" stroke-width="3"/>
+  <path d="M22 34h24l-3 17H25Z" fill="#f4f7e8"/>
+  <path d="M34 36V24" fill="none" stroke="url(#verdapot-accent)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M33 27C24 27 19 22 19 14c8 0 14 4 14 13Z" fill="url(#verdapot-accent)"/>
+  <path d="M35 24c1-7 6-11 13-11 0 7-5 12-13 11Z" fill="#78ca79"/>
+  <path d="M19 34h30" fill="none" stroke="#a8e063" stroke-width="4" stroke-linecap="round"/>
+  <path d="M48 29c0-4 4-8 4-8s4 4 4 8a4 4 0 0 1-8 0Z" fill="#72d5e8"/>
+</svg>

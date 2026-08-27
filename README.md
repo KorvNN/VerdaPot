@@ -1,68 +1,81 @@
-# VerdaPot
+<p>
+  <img src="verdapot-icon.svg" alt="VerdaPot" width="96" align="left">
+</p>
 
-**A fuzzy logic-based smart plant watering system built with ESP32 and Flutter.**
+# VerdaPot<br><sup><sup><em>"Local intelligence for healthier plants."</em></sup></sup>
 
-VerdaPot is a fully local IoT solution that monitors plant conditions and automatically waters plants based on their actual needs. The irrigation logic runs directly on the ESP32, while a Flutter mobile app provides real-time monitoring and control.
+VerdaPot is a fully local smart-watering system built with ESP32 and Flutter.
+The device evaluates real plant conditions with fuzzy logic, controls irrigation
+on-device, and reports live sensor data directly to the mobile app—without a cloud service.
 
-No cloud services are required — the phone and ESP32 communicate over the same Wi-Fi network.
+## Highlights
 
-## Features
-
-- Autonomous irrigation powered by fuzzy logic
-- Real-time monitoring through a Flutter mobile app
-- Fully local operation (no internet required)
-- Persistent plant profiles stored in ESP32 NVS memory
-- Non-blocking irrigation process
-- Transparent irrigation decisions with explanations
-- 15 predefined plant profiles + custom profile support
+- Autonomous irrigation driven by soil moisture and temperature stress
+- Non-blocking pump control with transparent, human-readable decision reasons
+- Live temperature, humidity, soil moisture, light, and pump status dashboard
+- Fifteen built-in plant profiles plus editable custom profiles
+- Persistent device configuration in ESP32 NVS storage
+- Local history, charts, watering events, notifications, and CSV export
+- Direct phone-to-device communication over the local Wi-Fi network
+- Offline detection, health monitoring, and guarded manual watering
 
 ## Hardware
 
-| Component | Description |
-|------------|------------|
-| ESP32 DevKit | Main controller |
-| DHT22 | Temperature & humidity sensor |
-| BH1750 | Light intensity sensor |
-| Capacitive Soil Sensor | Soil moisture measurement |
-| Relay + Water Pump | Irrigation control |
-| Passive Buzzer | Alerts and status notifications |
+| Component | Purpose |
+| --- | --- |
+| ESP32 DevKit | Sensor processing, fuzzy decisions, and pump control |
+| DHT22 | Air temperature and relative humidity |
+| BH1750 | Ambient light intensity |
+| Capacitive soil sensor | Soil-moisture measurement |
+| Relay and water pump | Irrigation |
+| Passive buzzer | Device feedback and alerts |
+
+## Quick start
+
+### 1. Configure and flash the ESP32
+
+Install the ESP32 Arduino core together with the DHT, BH1750, and ArduinoJson
+libraries. Set the local network, shared device token, app endpoint, pins, and
+soil calibration values in `firmware/smart_pot/config.h`, then flash
+`firmware/smart_pot/smart_pot.ino`.
+
+Never commit real Wi-Fi credentials or production device tokens.
+
+### 2. Run the Flutter app
+
+```bash
+cd app
+flutter pub get
+flutter run
+```
+
+Keep the phone and ESP32 on the same local network, then use the app's pairing
+screen to connect the device and activate a plant profile.
 
 ## Architecture
 
-### ESP32 Firmware
-- Sensor data collection
-- Fuzzy logic decision engine
-- Irrigation control
-- Local HTTP server
+| Layer | Responsibility |
+| --- | --- |
+| ESP32 firmware | Reads sensors, evaluates fuzzy rules, controls irrigation, and stores the active profile |
+| Local protocol | Exchanges authenticated readings, events, profiles, and pump commands over HTTP |
+| Flutter app | Provides pairing, monitoring, history, notifications, profiles, and settings |
+| Local database | Stores sensor history, irrigation events, devices, and plant profiles on the phone |
 
-### Flutter App
-- Live dashboard
-- Plant profile management
-- Device pairing
-- Irrigation history
-- Local notifications
+```text
+Sensors → ESP32 fuzzy engine → relay and pump
+               ↕ local Wi-Fi
+       Flutter app → local history and alerts
+```
 
-## Plant Profiles
+## Project structure
 
-The system includes 15 ready-to-use plant profiles, such as:
+| Path | Contents |
+| --- | --- |
+| `firmware/smart_pot/` | ESP32 firmware, configuration, fuzzy rules, and buzzer feedback |
+| `app/lib/` | Flutter application source |
+| `app/lib/data/` | Drift database, repositories, and preset plant profiles |
+| `app/lib/server/` | Local ingestion server, authentication, discovery, and health monitoring |
 
-- Cactus
-- Snake Plant
-- Monstera
-- Peace Lily
-- Begonia
-- Ivy
+## Context
 
-Users can also create custom plant profiles with their own irrigation parameters.
-
-## Communication
-
-VerdaPot operates entirely within a local network:
-
-- ESP32 hosts a local HTTP server
-- Flutter app communicates directly with the device
-- No cloud infrastructure or internet connection is required
-
-## License
-
-Developed as part of a university Microprocessor Systems course.
+VerdaPot was developed as a university Microprocessor Systems course project.
