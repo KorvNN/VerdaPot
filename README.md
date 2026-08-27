@@ -8,6 +8,14 @@ VerdaPot is a fully local smart-watering system built with ESP32 and Flutter.
 The device evaluates real plant conditions with fuzzy logic, controls irrigation
 on-device, and reports live sensor data directly to the mobile app—without a cloud service.
 
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/dashboard.png" alt="VerdaPot live monitoring and watering dashboard" width="46%">
+  &nbsp;
+  <img src="docs/screenshots/custom-plant-profile.png" alt="VerdaPot custom plant profile editor" width="43%">
+</p>
+
 ## Highlights
 
 - Autonomous irrigation driven by soil moisture and temperature stress
